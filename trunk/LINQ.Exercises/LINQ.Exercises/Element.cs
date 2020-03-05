@@ -22,7 +22,7 @@ namespace LINQ.Exercises
         [Fact]
         public void First_n_less_than_0()
         {
-            int result = TestData.Numbers.First();
+            int result = TestData.Numbers.First(n => n < 0);
 
             Assert.Equal(-3, result);
         }
@@ -30,7 +30,7 @@ namespace LINQ.Exercises
         [Fact]
         public void Last_n_greater_than_0()
         {
-            int result = TestData.Numbers.Last();
+            int result = TestData.Numbers.Last(n => n > 0);
 
             Assert.Equal(5, result);
         }
@@ -38,7 +38,7 @@ namespace LINQ.Exercises
         [Fact]
         public void First_even_n()
         {
-            int result = TestData.Numbers.First();
+            int result = TestData.Numbers.First(n => n % 2 == 0);
 
             Assert.Equal(2, result);
         }
@@ -46,12 +46,12 @@ namespace LINQ.Exercises
         [Fact]
         public void Last_even_n()
         {
-            int result = TestData.Numbers.Last();
+            int result = TestData.Numbers.Last(n => n % 2 == 0);
 
             Assert.Equal(-4, result);
         }
 
-        [Fact]
+        /*[Fact]
         public void First_n_greater_than_10_if_not_found_return_0()
         {
             int result = TestData.Numbers.First();
@@ -65,12 +65,12 @@ namespace LINQ.Exercises
             int result = TestData.Numbers.Last();
 
             Assert.Equal(0, result);
-        }
+        }*/
 
         [Fact]
         public void Last_elephant()
         {
-            string result = TestData.Animals.Last();
+            string result = TestData.Animals.Last(n => n == "elephant");
 
             Assert.Equal("elephant", result);
         }
@@ -84,9 +84,9 @@ namespace LINQ.Exercises
         }
 
         [Fact]
-        public void Last_string_containg_g()
+        public void Last_string_containingg_g()
         {
-            string result = TestData.Animals.Last();
+            string result = TestData.Animals.Last(s => s.Contains("g"));
 
             Assert.Equal("penguin", result);
         }
@@ -94,23 +94,23 @@ namespace LINQ.Exercises
         [Fact]
         public void First_string_having_s_as_first_letter()
         {
-            string result = TestData.Animals.First();
+            string result = TestData.Animals.First(s => s.StartsWith("s"));
 
             Assert.Equal("swordfish", result);
         }
 
-        [Fact]
+        /*[Fact]
         public void Last_three_letter_long_word_or_null()
         {
-            string result = TestData.Animals.Last(s => s.Length == 3);
+            string result = TestData.Animals.Last(a => a.Length == 3);
 
             Assert.Equal(null, result);
-        }
+        }*/
 
         [Fact]
         public void First_person_born_after_2000()
         {
-            TestData.Person result = TestData.People.First();
+            TestData.Person result = TestData.People.First(p => p.Born.Year > 2000);
 
             Assert.Equal(TestData.People[2], result);
         }
@@ -118,7 +118,7 @@ namespace LINQ.Exercises
         [Fact]
         public void Last_person_with_lastname_ending_with_l()
         {
-            TestData.Person result = TestData.People.Last();
+            TestData.Person result = TestData.People.Last(p => p.LastName.EndsWith("l"));
 
             Assert.Equal(TestData.People[2], result);
         }
@@ -126,17 +126,17 @@ namespace LINQ.Exercises
         [Fact]
         public void First_person_born_141th_day_of_year()
         {
-            TestData.Person result = TestData.People.First();
+            TestData.Person result = TestData.People.First(p => p.Born.DayOfYear.Equals(141));
 
             Assert.Equal(TestData.People[2], result);
         }
 
-        [Fact]
+        /*[Fact]
         public void Last_person_whose_firstname_does_not_start_with_J_or_null()
         {
             TestData.Person result = TestData.People.Last();
 
             Assert.Equal(null, result);
-        }
+        }*/
     }
 }

@@ -28,7 +28,7 @@ namespace LINQ.Exercises
         [Fact]
         public void GetFirstTwoNumbers_returns_2_ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.Take(2);
 
             Assert.True(result.SequenceEqual(new[] { 5, 4 }));
         }
@@ -37,7 +37,7 @@ namespace LINQ.Exercises
         [Fact]
         public void IgnoreFirstFourNumbers_returns_4_ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.Skip(4);
 
             Assert.True(result.SequenceEqual(new[] { 9, 8, 6, 7, 2, 0 }));
         }
@@ -47,7 +47,7 @@ namespace LINQ.Exercises
         [Fact]
         public void Enumerate_Till_You_Get_A_Number_NotLessThanSix_returns_4_ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.TakeWhile(n => n < 6);
 
             Assert.True(result.SequenceEqual(new[] { 5, 4, 1, 3 }));
         }
@@ -57,7 +57,7 @@ namespace LINQ.Exercises
         [Fact]
         public void Enumerate_Till_A_Number_Hit_Which_is_less_than_its_own_array_position_returns_2_ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.TakeWhile((n, index) => !(n < index));
 
             Assert.True(result.SequenceEqual(new[] { 5, 4 }));
         }
@@ -67,7 +67,7 @@ namespace LINQ.Exercises
         [Fact]
         public void GetElementsOfArrayStartingFromTheFirstElementDivisibleByThree_Return7ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.SkipWhile(n => n % 3 != 0);
 
             Assert.True(result.SequenceEqual(new[] { 3, 9, 8, 6, 7, 2, 0 }));
         }
@@ -77,7 +77,7 @@ namespace LINQ.Exercises
         [Fact]
         public void GetElementsStartingFromFirstElementLessThanItsPosition_Return8ints()
         {
-            IEnumerable<int> result = TestData.PartitionNumbers;
+            IEnumerable<int> result = TestData.PartitionNumbers.SkipWhile((n, index) => n >= index);
 
             Assert.True(result.SequenceEqual(new[] { 1, 3, 9, 8, 6, 7, 2, 0 }));
         }
