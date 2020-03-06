@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelUserStore">
     <attachedFolders>
+      <Path>../../trunk</Path>
       <Path>../../../linq-exercises.git</Path>
     </attachedFolders>
     <explicitIncludes />
